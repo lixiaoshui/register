@@ -1,5 +1,4 @@
-$(function() {
-    console.log(1111)
+$(function(){
     var $name = $('#name'),
         $phone = $('#phone'),
         $psd = $('#psd'),
@@ -11,11 +10,7 @@ $(function() {
         $vrf = $('#vrf'),
         $vrfm = $('#vrfm');
     var count = 59;
-    var nameres = false,
-        psdres = false,
-        phoneres = false,
-        yzres = false;
-
+    var nameres = false,psdres = false,phoneres = false,yzres = false;
     //输入提示
     $name.focus(function() {
         $namem.html('设置后不可更改，中英文皆可，最长14个英文或7个汉字')
@@ -23,9 +18,6 @@ $(function() {
     $psd.focus(function() {
         $psdm.html('长度为8~14个字符，字母/数字/标点符号至少两种，不能有中文和空格')
     });
-
-    //字段级别验证
-
     //用户名检验
     $name.blur(function() {
         if($name.val().length > 14){
@@ -37,7 +29,6 @@ $(function() {
             nameres=true;
         }
     });
-
     //手机号验证
     $phone.blur(function() {
         if(!(/^\d{11}$/.test($phone.val()))){
@@ -47,7 +38,6 @@ $(function() {
             phoneres = true;
         }
     });
-
     //密码验证
     $psd.blur(function() {
         if($psd.val().length < 8 || $psd.val().length > 14){
@@ -59,7 +49,6 @@ $(function() {
             psdres = true;
         }
     })
-
     //验证码验证
     $yz.blur(function() {
         if(!$yz.val()){
@@ -70,9 +59,6 @@ $(function() {
             yzres = true;
         }
     })
-
-
-
     //验证码效果
     $vrf.click(function() {
         $vrf.addClass('disable').attr({'disabled':'disabled'});
@@ -86,8 +72,6 @@ $(function() {
             count = 59;
         },60000);
     });
-
-
     //表单验证
     $button.click(function() {
         if(! (nameres && psdres && phoneres && yzres)){
@@ -97,6 +81,4 @@ $(function() {
         }
         
     });
-
-    
 });
